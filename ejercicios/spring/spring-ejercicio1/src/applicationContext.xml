@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="moral" class="edu.dgsca.spring.Moral">
+		<property name="nombre" value="Sistemas inteligentes S.C." />
+		<property name="rfc" value="SIN790612X9U" />
+	</bean>
+	<bean id="fisica" class="edu.dgsca.spring.Fisica">
+		<property name="nombre" value="Roberto" />
+		<property name="apellidos" value="Peñalosa Ramírez" />
+		<property name="rfc" value="PERR090711J7A" />
+	</bean>
+
+</beans>
