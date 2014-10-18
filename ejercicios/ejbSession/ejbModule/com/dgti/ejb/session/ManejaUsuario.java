@@ -11,9 +11,15 @@ import com.dgti.ejb.session.interfaces.ManejaUsuarioRemote;
 import com.dgti.modelo.Usuario;
 
 import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
+import javax.ejb.Remove;
+import javax.ejb.Stateful;
 
-@Stateless
+import org.jboss.ejb3.annotation.LocalBinding;
+import org.jboss.ejb3.annotation.RemoteBinding;
+
+@RemoteBinding(jndiBinding="ManejaUsuarioRemoto")
+@LocalBinding(jndiBinding="ManejaUsuarioLocal")
+@Stateful
 @LocalBean
 public class ManejaUsuario implements ManejaUsuarioRemote, ManejaUsuarioLocal {
 	
@@ -69,5 +75,15 @@ public class ManejaUsuario implements ManejaUsuarioRemote, ManejaUsuarioLocal {
 			// NOTHING TO DOss
 		}
 	}
+	
+	@Override
+	public void cierraSesion(){
+		remove();
+	}
     
+	@Remove
+	public void remove(){
+		System.out.print("=====> EJB-Se ha llamado a remove desde el cliente");
+	}
+	
 }

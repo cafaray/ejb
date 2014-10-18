@@ -16,10 +16,23 @@ public class Lanzador {
 	public static void main(String[] args){
 		try {
 			Context ctx = getContext();						
-			Object ref = ctx.lookup("Ejercicio1");
+			//Object ref = ctx.lookup("Ejercicio1");
+			//Ejercicio1Remote ejercicio1 = (Ejercicio1Remote) ref;			
+			//System.out.println("El llamado se genero correctamente: " 
+			//+ ejercicio1.sayMyName("Rubén"));
+			
+			Object ref = ctx.lookup("Ejercicio1");   // <-- Qué va aquí en vez de asteriscos
 			Ejercicio1Remote ejercicio1 = (Ejercicio1Remote) ref;			
-			System.out.println("El llamado se genero correctamente: " 
-			+ ejercicio1.sayMyName("Rubén"));			
+			Usuario usuario = new Usuario();
+			usuario.setApellidos("Ramírez");
+			usuario.setNombre("Joel");
+			usuario.setContrasenia("password");
+			usuario.setCorreo("mail@mail.com");
+			usuario.setEstatus("A");
+			usuario.setCuenta("jramirez");					
+			usuario = ejercicio1.registraUsuario(usuario);
+			System.out.println(usuario.getCuenta());
+			
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -39,13 +52,5 @@ public class Lanzador {
 
 
 /*
- * Usuario usuario = new Usuario();
-			usuario.setApellidos("Ramírez");
-			usuario.setNombre("Joel");
-			usuario.setContrasenia("password");
-			usuario.setCorreo("mail@mail.com");
-			usuario.setEstatus("A");
-			usuario.setCuenta("jramirez");					
-			usuario = ejercicio1.registraUsuario(usuario);
-			System.out.println(usuario.getCuenta());
+ * 
 */

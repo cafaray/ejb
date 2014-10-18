@@ -10,5 +10,6 @@ public interface IManejaUsuario {
 	Usuario buscarPorCuenta(String cuenta);
 	List<Usuario> listado(String nombre);
 	List<Usuario> listado(String nombre, String apellidos);
+	void cierraSesion();
 	
 }

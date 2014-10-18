@@ -24,7 +24,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	@Override
 	public List<Usuario> findAll() {
-		List<Usuario> vuelta = (List<Usuario>) usuarios.values();
+		List<Usuario> vuelta = new ArrayList<Usuario>();
+		
+		for(String llave: usuarios.keySet()){
+			vuelta.add(usuarios.get(llave));
+		}
+		
 		return vuelta;
 	}
 
