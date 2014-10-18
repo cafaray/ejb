@@ -1,5 +1,6 @@
 package com.dgti.ejb.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -29,38 +30,53 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	@Override
 	public List<Usuario> findAll(String cuenta) {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+		
+		for(String idCuenta:usuarios.keySet()){
+			if(idCuenta.contains(cuenta)){
+				listaUsuarios.add(usuarios.get(idCuenta));
+			}
+		}
+		
+		return listaUsuarios;
 	}
 
 	@Override
 	public List<Usuario> findAll(String nombre, String apellidos) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+		
+		for(Usuario usuario:usuarios.values()){
+			if(usuario.getNombre().contains(nombre) 
+				&& usuario.getApellidos().contains(apellidos)){
+				listaUsuarios.add(usuario);
+			}
+		}
+		
+		return listaUsuarios;
 	}
 
 	@Override
 	public Usuario insertar(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return null;
+		usuarios.put(usuario.getCuenta(), usuario);
+		return usuario;
 	}
 
 	@Override
 	public Usuario actualizar(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return null;
+		return insertar(usuario);
 	}
 
 	@Override
 	public void eliminar(Usuario usuario) {
-		// TODO Auto-generated method stub
+		usuarios.remove(usuario.getCuenta());
 		
 	}
 
 	@Override
 	public void desactivar(Usuario usuario) {
-		// TODO Auto-generated method stub
-		
+		usuario.setEstatus("I");
+		actualizar(usuario);
 	}
 
 }

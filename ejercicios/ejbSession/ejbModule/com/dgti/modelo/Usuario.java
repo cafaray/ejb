@@ -1,6 +1,6 @@
 package com.dgti.modelo;
 
-public class Usuario {
+public class Usuario {	
 
 	private String cuenta;
 	private String correo;
