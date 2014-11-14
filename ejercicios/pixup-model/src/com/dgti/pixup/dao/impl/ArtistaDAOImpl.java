@@ -59,5 +59,38 @@ public class ArtistaDAOImpl extends GenericDAOImpl<Artista, String> implements A
             }
         }
     }
+    
+    @Override
+    public List<Artista> buscarArtistasPorNombre(String nombre) throws PixupDAOException {
+        try{
+            em = factory.createEntityManager();
+            TypedQuery<Artista> query = em.createNamedQuery("Artista.findByNombre", Artista.class);
+            query.setParameter("nombre", nombre);
+            List<Artista> artistas = query.getResultList();
+            return artistas;
+        }catch(PersistenceException e){
+            throw new PixupDAOException(e);
+        } finally {
+            if (em.isOpen()){
+                em.close();
+            }
+        }
+    }
+
+	@Override
+	public List<Artista> artistas() throws PixupDAOException {
+		try{
+            em = factory.createEntityManager();
+            TypedQuery<Artista> query = em.createNamedQuery("Artista.findAll", Artista.class);            
+            List<Artista> artistas = query.getResultList();
+            return artistas;
+        }catch(PersistenceException e){
+            throw new PixupDAOException(e);
+        } finally {
+            if (em.isOpen()){
+                em.close();
+            }
+        }
+	}
 
 }

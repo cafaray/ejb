@@ -3,14 +3,13 @@ package com.dgti.pixup.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
-/**
- * The persistent class for the artista database table.
- * 
- */
 @Entity
 @Table(name="artista")
-@NamedQuery(name="Artista.findAll", query="SELECT a FROM Artista a")
+@NamedQueries({
+	@NamedQuery(name="Artista.findAll", query="SELECT a FROM Artista a"),
+	@NamedQuery(name="Artista.findById", query = "SELECT a FROM Artista a WHERE a.idArtista = :id"),
+	@NamedQuery(name="Artista.findByNombre", query = "SELECT a FROM Artista a WHERE a.nombre = :nombre"),
+})
 public class Artista implements Serializable {
 	private static final long serialVersionUID = 1L;
 

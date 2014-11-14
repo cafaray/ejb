@@ -10,4 +10,7 @@ public interface UsuarioDAO extends GenericDAO<Usuario, String> {
      * @throws PixupDAOException 
      */
     void recuperaContrasena(String correoElectronico)throws PixupDAOException;
+    
+    Usuario actualizaContrasena(Usuario usuario, String contrasena) throws PixupDAOException;
+    
 }

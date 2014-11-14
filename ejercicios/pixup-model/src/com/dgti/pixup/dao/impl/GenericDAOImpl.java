@@ -18,7 +18,8 @@ import com.dgti.pixup.exception.PixupDAOException;
 public class GenericDAOImpl<T, Id extends Serializable> implements GenericDAO<T, Id> {
 
     private Class<T> klass;
-    protected static EntityManagerFactory factory = Persistence.createEntityManagerFactory("persistenceUnit");
+    protected static EntityManagerFactory factory = 
+    		Persistence.createEntityManagerFactory("pixup-model");
 
     public GenericDAOImpl(Class<T> clase) {
         this.klass = clase;

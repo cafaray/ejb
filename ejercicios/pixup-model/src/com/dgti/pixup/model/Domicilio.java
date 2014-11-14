@@ -35,12 +35,7 @@ public class Domicilio implements Serializable {
 	//uni-directional many-to-one association to Usuario
 	@ManyToOne
 	@JoinColumn(name="id_usuario")
-	private Usuario usuario1;
-
-	//uni-directional many-to-one association to Usuario
-	@ManyToOne
-	@JoinColumn(name="id_usuario")
-	private Usuario usuario2;
+	private Usuario usuario;
 
 	public Domicilio() {
 	}
@@ -85,20 +80,12 @@ public class Domicilio implements Serializable {
 		this.colonia = colonia;
 	}
 
-	public Usuario getUsuario1() {
-		return this.usuario1;
+	public Usuario getUsuario() {
+		return this.usuario;
 	}
 
-	public void setUsuario1(Usuario usuario1) {
-		this.usuario1 = usuario1;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
-
-	public Usuario getUsuario2() {
-		return this.usuario2;
-	}
-
-	public void setUsuario2(Usuario usuario2) {
-		this.usuario2 = usuario2;
-	}
-
+	
 }

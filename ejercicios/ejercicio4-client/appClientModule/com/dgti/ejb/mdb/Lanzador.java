@@ -27,6 +27,11 @@ public class Lanzador {
 			conexion = factory.createQueueConnection();
 			session = conexion.createQueueSession(false, QueueSession.AUTO_ACKNOWLEDGE);
 			Usuario usuario = new Usuario();
+			usuario.setNombre("Juan");
+			usuario.setApPaterno("López");
+			usuario.setApMaterno("Santana");
+			usuario.setEmail("cafaray@gmail.com");
+			usuario.setNick("nick");
 			usuario.setPassword("sinPassword");
 			ObjectMessage message = session.createObjectMessage(usuario);
 			message.setStringProperty("contrasena", "nuevoPassword");			

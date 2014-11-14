@@ -18,7 +18,4 @@ public class PixupDAOException extends Exception {
     public PixupDAOException(Throwable cause) {
         super(cause);
     }
-
-  
-    
 }
